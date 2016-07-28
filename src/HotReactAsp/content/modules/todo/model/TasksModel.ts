@@ -21,5 +21,5 @@ export enum ActionType {
     REMOVE_TASK,
     MARK_DONE,
     MARK_NOT_DONE,
-    UNDO,
+    UNDO
 }

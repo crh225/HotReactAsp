@@ -25,10 +25,10 @@ class Tasks extends React.Component<{}, TasksState>{
         const { children } = this.props
 
         return (
-            <div>
+            <div >
                 <div className="row page-heading">
                     <div className="col-xs-12">
-                        <h2>Tasks</h2>
+                        <h2>Todo Tasks</h2>
                     </div>
                 </div>
                 { children }

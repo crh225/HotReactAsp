@@ -1,4 +1,5 @@
 ﻿import * as React from 'react'
+import {browserHistory} from 'react-router'
 import {ITask, IStoreAction, ActionType} from '../model/TasksModel'
 import store from '../store/Store'
 
@@ -24,6 +25,19 @@ class TaskRow extends React.Component<TaskProp, {}>{
             task,
         }
         store.dispatch(storeAction)
+    }
+
+    onEdit = (e) => {
+        //TODO: doesnt work just yet
+        e.preventDefault();
+        const { task } = this.props
+        var storeAction: IStoreAction = {
+           type: ActionType.EDIT_TASK,
+           task
+        }
+        store.dispatch(storeAction)
+
+
     }
 
     onDone = (e) => {
@@ -73,6 +87,9 @@ class TaskRow extends React.Component<TaskProp, {}>{
                                     style={ task.done ? styleShow : styleHide}
                                     onClick={this.onNotDone.bind(this) }
                                     className="btn btn-warning btn-sm">Not done</button>
+                                <button
+                                    onClick={this.onEdit.bind(this) }
+                                    className="btn btn-info btn-sm">Edit</button>
                                 <button
                                     onClick={this.onRemove.bind(this) }
                                     className="btn btn-danger btn-sm">Remove</button>
