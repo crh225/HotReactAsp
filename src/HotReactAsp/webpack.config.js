@@ -3,8 +3,8 @@ var path = require('path');
 var outFolder = path.resolve(__dirname, "./wwwroot/app");
 var isProduction = process.env.NODE_ENV === 'production ';
 var jsxLoaders = isProduction ?
-    ['babel?presets[]=es2015,presets[]=react'] :
-    ['react-hot', 'babel?presets[]=es2015,presets[]=react']; // only react hot load in debug build
+    ['babel?presets[]=es2015,presets[]=react&plugins[]=transform-runtime'] :
+    ['react-hot', 'babel?presets[]=es2015,presets[]=react&plugins[]=transform-runtime']; // only react hot load in debug build
 var entryPoint = './content/app.tsx';
 var app = isProduction ? [entryPoint] : [
     'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
@@ -28,7 +28,7 @@ module.exports = {
             test: /\.(js|ts|tsx)$/,
             loaders: [
                  'react-hot',
-                 'babel?presets[]=es2015',                  
+                 'babel?presets[]=es2015,presets[]=react&plugins[]=transform-runtime',
                  'ts-loader'
             ] ,
             exclude: /node_modules/

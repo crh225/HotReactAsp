@@ -1,6 +1,11 @@
+//import {CommentBox} from './modules/comment/CommentBox';
+//import * as React from 'react';
+//import * as ReactDOM from 'react-dom';
 "use strict";
-var CommentBox_1 = require('./modules/comment/CommentBox');
-var React = require('react');
 var ReactDOM = require('react-dom');
-ReactDOM.render(React.createElement(CommentBox_1.CommentBox, {url: "/api/comments", pollInterval: 2000}), document.getElementById('content'));
+var Routes_1 = require('./modules/todo/Routes');
+var render = ReactDOM.render;
+console.log('Main.tsx 2');
+var root = document.querySelector('#root');
+render(Routes_1.default, root);
 //# sourceMappingURL=app.js.map

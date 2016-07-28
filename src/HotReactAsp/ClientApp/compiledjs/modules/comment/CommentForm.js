@@ -28,7 +28,7 @@ var CommentForm = (function (_super) {
     }
     CommentForm.prototype.render = function () {
         var _this = this;
-        return (React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit}, React.createElement("input", {type: "text", placeholder: "Your name", ref: function (author) { return _this.ctrls.author = author; }}), React.createElement("input", {type: "text", placeholder: "Say something...", ref: function (text) { return _this.ctrls.text = text; }}), React.createElement("input", {type: "text", placeholder: "Say else...", ref: function (book) { return _this.ctrls.book = book; }}), React.createElement("input", {type: "submit", value: "Post"})));
+        return (React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit}, React.createElement("input", {type: "text", placeholder: "Your name", ref: function (author) { return _this.ctrls.author = author; }}), React.createElement("input", {type: "text", placeholder: "Book Names", ref: function (book) { return _this.ctrls.book = book; }}), React.createElement("input", {type: "text", placeholder: "Some Text...", ref: function (text) { return _this.ctrls.text = text; }}), React.createElement("input", {type: "submit", value: "Post"})));
     };
     return CommentForm;
 }(React.Component));

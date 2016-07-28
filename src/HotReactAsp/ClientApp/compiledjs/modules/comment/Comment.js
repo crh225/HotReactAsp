@@ -17,7 +17,7 @@ var Comment = (function (_super) {
         };
     }
     Comment.prototype.render = function () {
-        return (React.createElement("div", {className: "comment"}, React.createElement("h2", {className: "comment-author"}, "Author name: ", this.props.author), React.createElement("div", {className: "comment-text"}, React.createElement("span", {dangerouslySetInnerHTML: this.rawMarkup()})), React.createElement("div", {className: "comment-book"}, React.createElement("span", {dangerouslySetInnerHTML: this.rawMarkup()}))));
+        return (React.createElement("div", {className: "comment"}, React.createElement("h2", {className: "comment-author"}, "Author name: ", this.props.author), React.createElement("div", {className: "comment-text"}, "Book name: ", this.props.book), React.createElement("div", {className: "comment-book"}, "text:", React.createElement("span", {dangerouslySetInnerHTML: this.rawMarkup()}))));
     };
     return Comment;
 }(React.Component));

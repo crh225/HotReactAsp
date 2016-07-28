@@ -13,7 +13,7 @@ var CommentList = (function (_super) {
     }
     CommentList.prototype.render = function () {
         var commentNodes = this.props.data.map(function (comment) {
-            return (React.createElement(Comment_1.Comment, {author: comment.author, key: comment.id}, comment.text, " ", comment.book));
+            return (React.createElement(Comment_1.Comment, {author: comment.author, key: comment.id, book: comment.book}, comment.text));
         });
         return (React.createElement("div", {className: "commentList"}, commentNodes));
     };

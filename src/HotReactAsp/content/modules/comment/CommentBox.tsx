@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as marked from 'marked';
-import * as es6promise from 'es6-promise';
+import * as es6promise from 'es6-shim';
 import * as fetch from 'isomorphic-fetch';
 import './CommentBox.less';
 import * as jquery from 'jquery';

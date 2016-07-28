@@ -5,6 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require('react');
+var fetch = require('isomorphic-fetch');
 require('./CommentBox.less');
 var CommentList_1 = require('./CommentList');
 var CommentForm_1 = require('./CommentForm');
@@ -14,17 +15,30 @@ var CommentBox = (function (_super) {
         var _this = this;
         _super.call(this, props);
         this.loadCommentsFromServer = function () {
-            $.ajax({
-                url: _this.props.url,
-                dataType: 'json',
-                cache: false,
-                success: function (data) {
-                    this.setState({ data: data, value: this.state.value - 12 });
-                }.bind(_this),
-                error: function (xhr, status, err) {
-                    console.error(this.props.url, status, err.toString());
-                }.bind(_this)
-            });
+            //$.ajax({
+            //    url: this.props.url,
+            //    dataType: 'json',
+            //    cache: false,
+            //    success: function (data) {
+            //        this.setState({ data: data, value: this.state.value - 12 });
+            //    }.bind(this),
+            //    error: function (xhr, status, err) {
+            //        console.error(this.props.url, status, err.toString());
+            //    }.bind(this)
+            //});
+            fetch(_this.props.url)
+                .then(function (response) {
+                if (response.status >= 400) {
+                    throw new Error("Bad response from server");
+                }
+                else {
+                    return response.json();
+                }
+            })
+                .then(function (data) {
+                //console.log(data);
+                this.setState({ data: data, value: this.state.value + 1 });
+            }.bind(_this));
         };
         this.handleCommentSubmit = function (comment) {
             var comments = _this.state.data;
@@ -43,13 +57,6 @@ var CommentBox = (function (_super) {
                 }.bind(_this)
             });
         };
-        //constructor(props) {
-        //    super(props);
-        //    this.state = this.state.data;
-        //    };
-        //getInitialState = () => {
-        //    return { data: [], value: 0 };
-        //}
         this.componentDidMount = function () {
             _this.loadCommentsFromServer();
             setInterval(_this.loadCommentsFromServer, _this.props.pollInterval);
@@ -60,7 +67,7 @@ var CommentBox = (function (_super) {
         };
     }
     CommentBox.prototype.render = function () {
-        return (React.createElement("div", {className: "commentBox"}, React.createElement("h1", null, "Comments ", React.createElement("span", null, "(Successful server get requests: ", this.state.value, ") ")), React.createElement(CommentList_1.CommentList, {data: this.state.data}), React.createElement(CommentForm_1.CommentForm, {onCommentSubmit: this.handleCommentSubmit})));
+        return (React.createElement("div", {className: "commentBox"}, React.createElement("h1", null, "Comments ", React.createElement("span", null, "(Successful server get requests: ", this.state.value, ") ")), React.createElement(CommentForm_1.CommentForm, {onCommentSubmit: this.handleCommentSubmit}), React.createElement("br", null), React.createElement(CommentList_1.CommentList, {data: this.state.data})));
     };
     return CommentBox;
 }(React.Component));

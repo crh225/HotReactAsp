@@ -19,11 +19,19 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-runtime": "^6.11.6",
     "es6-promise": "^3.2.1",
+    "es6-shim": "^0.35.1",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "2.1.4",
     "marked": "^0.3.5",
     "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "react-history": "^1.0.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.6.0",
+    "redux": "^3.5.2"
   }
 }
